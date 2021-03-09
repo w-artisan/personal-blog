@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
-  def home; end
+  def home
+    if !current_user.is_a?(GuestUser)
+      redirect_to blogs_path
+  end
 
   def about; end
 end
