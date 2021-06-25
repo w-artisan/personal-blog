@@ -17,6 +17,7 @@ gem 'webpacker', '~> 4.0'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'figaro'
+gem 'react-rails', '~> 2.6', '>= 2.6.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
