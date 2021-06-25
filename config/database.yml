@@ -24,9 +24,12 @@ default: &default
 development:
   <<: *default
   database: personal_blog_development
-  username: personal_blog
+  # username: personal_blog
+  username: postgres
   password: <%= ENV['PERSONAL_BLOG_DATABASE_PASSWORD'] %>
-  host: <%= ENV['MYAPP_DATABASE_HOST'] || 'localhost' %>
+  # password:
+  # host: <%= ENV['MYAPP_DATABASE_HOST'] || 'localhost' %>
+  host: ''
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
