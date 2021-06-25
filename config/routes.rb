@@ -10,5 +10,12 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'about-me', to: 'pages#about'
   root to: 'pages#home'
+
+  resources :blogs do
+    resources :comments, only: [:create]
+    member do
+      get :get_comments
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
