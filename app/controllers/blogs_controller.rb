@@ -57,6 +57,11 @@ class BlogsController < ApplicationController
     end
   end
 
+  def get_comments
+    comments = @blog.comments.select("comments.*, users.name").joins(:user).by_created_at
+    render json: { comments: comments }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
