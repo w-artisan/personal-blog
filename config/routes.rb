@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     sign_up: "register"
   }
 
-  resources :blogs
+  # resources :blogs
   get 'pages/home'
   get 'pages/about'
   get 'about-me', to: 'pages#about'
