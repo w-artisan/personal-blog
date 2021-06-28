@@ -22,4 +22,4 @@ end
 Blog.last.comments.create!([{ content: "This is a very good post", user_id: 1 },
                             { content: "I agree with all of this", user_id: 1 },
                             { content: "I don't agree with all of this", user_id: 1 }])
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+User.create!(email: "admin@example.com", name: "Admin Example", password: "password", password_confirmation: "password", superadmin: true) if Rails.env.development?
