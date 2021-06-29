@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
+    if @comment.discard
       head :no_content
     else
       render json: { error: @comment.errors.message }, status: 422
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.kept.find(params[:id])
   end
 
   def comment_params

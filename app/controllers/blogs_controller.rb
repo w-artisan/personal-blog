@@ -4,7 +4,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.kept.all
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -50,7 +50,7 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
-    @blog.destroy
+    @blog.discard
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
       format.json { head :no_content }
@@ -65,7 +65,12 @@ class BlogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.friendly.find(params[:id])
+      begin
+        @blog = Blog.kept.friendly.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_path, alert: "Blog does not exists!"
+        return
+      end
     end
 
     # Only allow a list of trusted parameters through.
