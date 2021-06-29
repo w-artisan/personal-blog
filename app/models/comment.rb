@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  include Discard::Model
+
   # validates_presence_of :content
   validates :content, presence: true
 
