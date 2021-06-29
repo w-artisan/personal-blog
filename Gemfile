@@ -18,6 +18,7 @@ gem 'activeadmin', '~> 2.8'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'figaro'
+gem 'friendly_id', '~> 5.1'
 gem 'react-rails', '~> 2.6', '>= 2.6.1'
 
 
