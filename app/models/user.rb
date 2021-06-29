@@ -12,8 +12,8 @@ class User < ApplicationRecord
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, confirmation: true
 
-  has_many :blogs
-  has_many :comments
+  has_many :blogs, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # Virtual Attributes
   def first_name
@@ -24,5 +24,15 @@ class User < ApplicationRecord
   def last_name
     # self.name.split.last
     name.split.last
+  end
+
+  after_discard do
+    blogs.discard_all
+    comments.discard_all
+  end
+
+  after_undiscard do
+    blogs.undiscard_all
+    comments.undiscard_all
   end
 end
