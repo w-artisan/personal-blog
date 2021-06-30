@@ -15,7 +15,8 @@ class Blog < ApplicationRecord
     comments.discard_all
   end
 
+  # app/models/blog.rb
   after_undiscard do
-    comments.undiscard_all
+    comments.where(deleted_by: nil).undiscard_all
   end
 end

@@ -34,7 +34,7 @@ class User < ApplicationRecord
   end
 
   after_undiscard do
-    blogs.undiscard_all
-    comments.undiscard_all
+    blogs.where(deleted_by: nil).undiscard_all
+    comments.where(deleted_by: nil).undiscard_all
   end
 end
