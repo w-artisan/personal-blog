@@ -6,6 +6,8 @@ class Blog < ApplicationRecord
   # validates_presence_of :title, :body
   validates :title, :body, presence: true
 
+  has_rich_text :body
+
   has_many :comments, dependent: :destroy
 
   belongs_to :user
