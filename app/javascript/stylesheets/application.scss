@@ -1,0 +1,37 @@
+$opacity-active: 1;
+
+trix-editor {
+  min-height: 10em;
+}
+
+trix-toolbar {
+  .trix-button-group {
+    border: 1px solid #bbb;
+    border-top-color: #ccc;
+    border-bottom-color: #888;
+  }
+
+  .trix-button {
+    border-bottom: 1px solid paleturquoise;
+    background: paleturquoise;
+
+    &:not(:first-child) {
+      border-left: 1px solid #ccc;
+    }
+
+    &.trix-active {
+      background: pink;
+      color: rgba(0, 0, 0, $opacity-active);
+    }
+  }
+}
+
+.trix-content {
+  max-height: 20rem !important;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  background-color: #edf2f7;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
