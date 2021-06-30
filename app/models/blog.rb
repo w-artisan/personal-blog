@@ -7,7 +7,9 @@ class Blog < ApplicationRecord
   validates :title, :body, presence: true
 
   has_many :comments, dependent: :destroy
+
   belongs_to :user
+  belongs_to :deleted_by, class_name: "User", optional: true
 
   after_discard do
     comments.discard_all
