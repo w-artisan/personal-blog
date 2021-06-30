@@ -7,6 +7,20 @@ ActiveAdmin.register User do
         @user.discard
         redirect_to admin_users_path
       end
+      @user.update(deleted_by: current_user)
+    end
+  end
+
+  action_item :restore, only: :show do
+    link_to "Restore User", restore_admin_user_path(user), method: :put if user.discarded?
+  end
+
+  member_action :restore, method: :put do
+    @user = User.find_by_id(params[:id])
+    if @user != current_user
+      @user.update(deleted_by: nil)
+      @user.undiscard
+      redirect_to admin_users_path
     end
   end
 

@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, confirmation: true
 
+  belongs_to :deleted_by, class_name: "User", optional: true
+
   has_many :blogs, dependent: :destroy
   has_many :comments, dependent: :destroy
 
